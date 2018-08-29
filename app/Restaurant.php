@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
 {
-    protected $fillable = ['name', 'description', 'photo', 'phone', 'google_maps', 'schedules', 'user_id'];
+    protected $fillable = ['name', 'description', 'address', 'photo', 'phone', 'google_maps', 'schedules', 'user_id'];
     
     public function user(){
         return $this->belongsTo(User::class);

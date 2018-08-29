@@ -84,7 +84,28 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->hasFile('image'))
+            $request['photo'] = $request->image
+                                    ->storeAs('photo',
+                                            rand(11111, 99999) . '.' . $request->image->extension());
+
+        $request->session()->flash('status', [
+            'class' => 'success',
+            'message' => 'Restaurante atualizado com sucesso'
+        ]);
+
+        $restaurant = \App\Restaurant::find($id);
+        $restaurant->update(array(
+            'name' => $request->name,
+            'description' => $request->description,
+            'address' => $request->address,
+            'photo' => $request->photo ?? $restaurant->photo,
+            'phone' => $request->phone,
+            'google_maps' => $request->google_maps,
+            'schedules' => $request->schedules,
+        ));
+
+        return redirect()->route('home');
     }
 
     /**

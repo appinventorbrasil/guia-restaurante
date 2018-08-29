@@ -21,6 +21,7 @@
                     <div class="card-header">Atualizar restaurante</div>
 
                     <form action="{{ route('restaurants.update', $restaurant->id) }}" method="POST" enctype="multipart/form-data">
+                        @method('put')
                         @csrf
                     @else
                     <div class="card-header">Cadastrar restaurante</div>
@@ -38,18 +39,23 @@
                                 <label for="">Descreva seu restaurante</label>
                                 <textarea class="form-control" type="text" rows="7" name="description" >{{ $restaurant->description ?? '' }}</textarea>
                             </div>
+                            <div class="col-md-12 form-group">
+                                <label for="">Endereço do restaurante</label>
+                                <input class="form-control" type="text" name="address" value="{{ $restaurant->address ?? '' }}">
+                            </div>
                            
                             <div class="row">
                                  <div class="col-md-4 form-group">
                                     <label for="">Imagem do restaurante </label>
-                                    <input class="form-control" type="file" name="image" >
+                                     <input class="form-control" type="file" name="image" value="{{ $restaurant->photo ?? '' }}">
                                 </div>
                                 @if(isset($restaurant))
                                     <div class="form-group col-md-4">
-                                        <img src="{{ asset($restaurant->photo) }}" alt="">
+                                        <img width="100%" src="{{ asset($restaurant->photo) }}" alt="">
                                     </div>
                                 @endif
                             </div>
+                           
                             <div class="col-md-12 form-group">
                                 <h4 class="title">Contato</h4>
     

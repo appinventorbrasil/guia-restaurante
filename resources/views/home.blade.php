@@ -4,8 +4,8 @@
 <div class="container">
 
     @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
+        <div class="alert alert-{{ session('status')['class'] }}" role="alert">
+            {{ session('status')['message'] }}
         </div>
     @endif
 
@@ -19,6 +19,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body row">
+                    
                     <div class="card col-md-6 col-sm-12 col-xs-12" >
                         <h1 align="center">100 visualizações</h1>
                         <div class="card-body" align="center">
