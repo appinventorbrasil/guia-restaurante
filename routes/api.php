@@ -26,12 +26,18 @@ Route::group(['prefix'=>'restaurants'], function(){
 
     /**
      * Lista todos os comentarios de um estabelecimento
-     * @param int id identificador do restaurante
+     * 
+     * @param interge id (obrigatorio) identificador do restaurante
      */
     Route::get('/{id}/comments', 'API\RestaurantController@listComments');
 
     /**
      * Faz um comentario em um estabelecimento
+     * 
+     * @param interge user_id (obrigatorio) => Identificador do usuario que esta comentando
+     * @param interge restaurant_id (obrigatorio) => Identificador do restaurante
+     * @param String description (opicional) => Comentario
+     * @param decimal evaluation (obrigatorio) => Avaliaca 
      */
     Route::post('/comments', 'API\RestaurantController@storeComments');
 });

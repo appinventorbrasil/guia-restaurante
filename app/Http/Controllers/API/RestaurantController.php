@@ -58,9 +58,9 @@ class RestaurantController extends Controller
         return $comment;
     }
 
-    public function listaComments($restaurant){
+    public function listComments($restaurant){
         if(Restaurant::find($restaurant)){
-            $comments = Restaurant::find($restaurant)->commetns;
+            $comments = Restaurant::find($restaurant)->comments;
             return $comments;
         }
         return [
