@@ -51,7 +51,7 @@
                                 </div>
                                 @if(isset($restaurant))
                                     <div class="form-group col-md-4">
-                                        <img width="100%" src="{{ asset($restaurant->photo) }}" alt="">
+                                        <img width="50%" src="{{ asset('public/' . $restaurant->photo) }}" alt="">
                                     </div>
                                 @endif
                             </div>
