@@ -38,9 +38,13 @@ class RestaurantController extends Controller
     public function show($id)
     {
         $restaurant = Restaurant::find($id);
-        $restaurant->comments;
-
-        return $restaurant;
+        if($restaurant){
+            $restaurant->comments;
+            return $restaurant;
+        }
+        return [
+            'mensagem' => 'Restaurante nao encontrado'
+        ];
     }
 
     public function storeComments(Request $request){
@@ -55,8 +59,13 @@ class RestaurantController extends Controller
     }
 
     public function listaComments($restaurant){
-        $comments = Restaurant::find($restaurant)->commetns;
-        return $comments;
+        if(Restaurant::find($restaurant)){
+            $comments = Restaurant::find($restaurant)->commetns;
+            return $comments;
+        }
+        return [
+            'mensagem' => 'Restaurante nao encontrado'
+        ];
     }
 
     /**

@@ -38,12 +38,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create(array(
+        $user = User::create(array(
             'email' => $request->email,
             '[name]' => $request->name,
             'password' => Hash::make($request->password),
             'tipo' => 'app.user',
         ));
+
+        return $user;
     }
 
     /**
