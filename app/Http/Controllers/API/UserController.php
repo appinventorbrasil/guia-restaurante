@@ -10,11 +10,11 @@ use App\User;
 class UserController extends Controller
 {
     public function login(Request $request){
-        $user = User::where('email', $request->email)->get();
+        $user = User::where('email', $request->email)->get()->first();
 
         if($user){
             if(Hash::check($request->password, $user->password)){
-                return $usurio;
+                return $user;
             }
             return ['error' => 'Senha invalida'];
         }
