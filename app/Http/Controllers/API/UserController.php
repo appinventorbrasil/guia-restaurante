@@ -40,7 +40,7 @@ class UserController extends Controller
     {
         $user = User::create(array(
             'email' => $request->email,
-            '[name]' => $request->name,
+            'name' => $request->name,
             'password' => Hash::make($request->password),
             'tipo' => 'app.user',
         ));

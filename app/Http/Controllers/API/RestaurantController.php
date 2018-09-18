@@ -15,7 +15,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return Restaurant::all();
+        $restaurants = Restaurant::all();
+        foreach ($restaurants as $key => $rest) {
+            $rest->image = asset('public/' . $rest->photo);
+        }
+        return $restaurants;
     }
 
     /**
