@@ -44,6 +44,7 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::find($id);
         if($restaurant){
             $restaurant->comments;
+            $restaurant->photo = asset($restaurant->photo);
             return $restaurant;
         }
         return [
